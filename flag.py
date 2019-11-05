@@ -43,8 +43,7 @@ def flag(size_of_flag):
                     int(hight_flag  - int(size_of_flag / 2)-row) * "oo" +
                     "*" + (row - 1) * " " + "#" + "\n"
                 )
-    flag = "".join(flag)
-    return flag
+    return "".join(flag)
 
 
 if __name__ == "__main__":
