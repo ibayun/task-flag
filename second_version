@@ -1,0 +1,41 @@
+import argparse
+
+
+def check_correct_input(size_of_flag):
+    if isinstance(size_of_flag, int) and size_of_flag > 0 and size_of_flag % 2 == 0:
+        return size_of_flag
+    raise argparse.ArgumentError(
+        None,
+        '\n  your input: {} - wrong! entered size shall be: '
+        '\n - type \'int\'; \n - number; \n - even.'.format(size_of_flag)
+    )
+
+
+def flag(size_of_flag):
+    check_correct_input(size_of_flag)
+    flag = []
+    flag.append("#" * size_of_flag * 3 + "##" + "\n")
+    flag.append(("#" + " " * 3 * size_of_flag + "#" + "\n") * int(size_of_flag / 2))
+
+    for el in range(0, size_of_flag):
+        if el < int(size_of_flag / 2):
+            flag.append(
+                "#" + (int(1.5 * size_of_flag) - el - 1) * " " +
+                "*" + int(el) * "oo" +
+                "*" + ( int(1.5 * size_of_flag) - el - 1) * " " + "#" + "\n"
+            )
+        else:
+            flag.append(
+                "#" + (el + int(size_of_flag / 2)) * " " + "*" +
+                int(size_of_flag - 1 - el) * "oo" +
+                "*" + (el + int(size_of_flag / 2)) * " " + "#" + "\n"
+            )
+
+    flag.append(("#" + " " * 3 * size_of_flag + "#" + "\n") * int(size_of_flag / 2))
+    flag.append("#" * size_of_flag * 3 + "##" + "\n")
+    return "".join(flag)
+
+
+if __name__ == "__main__":
+    print(flag(int(input("enter size of flag : "))))
+
