@@ -22,20 +22,11 @@ def flag(size_of_flag):
             flag.append(
                 "#" + (int(1.5 * size_of_flag) - el - 1) * " " +
                 "*" + int(el) * "oo" +
-                "*" + ( int(1.5 * size_of_flag) - el - 1) * " " + "#" + "\n"
-            )
-        else:
-            flag.append(
-                "#" + (el + int(size_of_flag / 2)) * " " + "*" +
-                int(size_of_flag - 1 - el) * "oo" +
-                "*" + (el + int(size_of_flag / 2)) * " " + "#" + "\n"
-            )
-
-    flag.append(("#" + " " * 3 * size_of_flag + "#" + "\n") * int(size_of_flag / 2))
-    flag.append("#" * size_of_flag * 3 + "##" + "\n")
-    return "".join(flag)
+                "*" + ( int(1.5 * size_of_flag) - el - 1) * " " + "#" + "\n")
+    flag.extend(flag[::-1])
+    print("".join(flag))
+    return  True
 
 
 if __name__ == "__main__":
     print(flag(int(input("enter size of flag : "))))
-
