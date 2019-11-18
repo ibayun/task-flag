@@ -25,8 +25,9 @@ def flag(size_of_flag):
                 "*" + ( int(1.5 * size_of_flag) - el - 1) * " " + "#" + "\n")
     flag.extend(flag[::-1])
     print("".join(flag))
-    return  True
+    return  "".join(flag)
 
 
 if __name__ == "__main__":
     print(flag(int(input("enter size of flag : "))))
+
